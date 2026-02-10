@@ -7,8 +7,8 @@ import os
 RUTA_FELIZ = os.path.join("assets", "sonrie.jpg")
 RUTA_LENGUA = os.path.join("assets", "Muejejeje.jpg")
 
-UMBRAL_SONRISA = 95
-UMBRAL_LENGUA = 38
+UMBRAL_SONRISA = 67
+UMBRAL_LENGUA = 26
 
 # --- CARGA DE RECURSOS ---
 print(f"Cargando recursos desde: {os.getcwd()}/assets")
@@ -64,7 +64,7 @@ with mp_face_mesh.FaceMesh(
 
                 ancho_boca = math.hypot(cx_der - cx_izq, cy_der - cy_izq)
                 alto_boca = math.hypot(cx_aba - cx_arr, cy_aba - cy_arr)
-
+                print(f"Ancho: {int(ancho_boca)} | Alto: {int(alto_boca)}")
                 # Detección
                 if ancho_boca > UMBRAL_SONRISA:
                     estado = "sonrisa"
@@ -81,7 +81,7 @@ with mp_face_mesh.FaceMesh(
 
         # --- LÓGICA DEL POP-UP ---
 
-        cv2.imshow('Camara', image)
+        cv2.imshow(' Camara ', image)
 
         if estado == "sonrisa":
             cv2.imshow('Reaccion', img_feliz)
